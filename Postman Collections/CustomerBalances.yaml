@@ -1,0 +1,67 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: CustomerBalances
+  description: "Collection for TIP REST Customer/balances service. \nConsumers: MyTele2App NL, SakesTool LV\nProviders: T2Prov, SV NL, SV LV"
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+host: preprd.tip.corp.tele2.com:3605
+basePath: /rest/Customer
+securityDefinitions:
+  auth:
+    type: basic
+    x-testValue: []
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /balances:
+    get:
+      description: Retrieve customer balances by http GET
+      summary: Customer/balances
+      tags:
+      - Misc
+      operationId: Customer/balances
+      produces:
+      - application/json
+      parameters:
+      - name: MSISDN
+        in: query
+        required: true
+        type: number
+        format: double
+        description: ''
+      - name: sender
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: legalEntity
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            type: object
+          examples: {}
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
